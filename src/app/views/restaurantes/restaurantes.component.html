@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <h2 class="my-4">Restaurantes</h2>
+  <div class="row row-cols-2 row-cols-md-4">
+
+    <div *ngFor="let restaurante of restaurantes" class="card-deck col mb-4">
+      <div class="card">
+        <img *ngIf="restaurante.photo_path; else default"
+          src="https://foodgate.s3.eu-west-2.amazonaws.com/{{ restaurante.photo_path }}" class="card-img-top"
+          alt="{{ restaurante.name }}">
+        <ng-template #default>
+          <img src="https://foodgate.s3.eu-west-2.amazonaws.com/restaurants/default.png" class="card-img-top"
+            alt="default">
+        </ng-template>
+        <div class="card-body">
+          <h5 class="card-title">{{ restaurante.name }}</h5>
+          <small class="text-muted">{{ restaurante.address }} | {{ restaurante.city }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
